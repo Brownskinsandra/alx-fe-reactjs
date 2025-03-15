@@ -1,8 +1,6 @@
 import { useState } from 'react'
-import RegistrationForm from "./components/RegistrationForm";
-import FormikForm from "./components/formikForm";
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
 import WelcomeMessage from './components/WelcomeMessage';
 import Header from './components/Header';
@@ -15,14 +13,14 @@ function App() {
 
   return (
     <>
-      {/* <div>
+      <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-      </div> */}
+      </div>
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
@@ -38,11 +36,6 @@ function App() {
       <WelcomeMessage />
       <Header />
       <MainContent />
-      <h1>Controlled Component Form</h1>
-      <RegistrationForm />
-      <hr />
-      <h1>Formik Form</h1>
-      <FormikForm />
       <Footer />
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography"/>
     </>
