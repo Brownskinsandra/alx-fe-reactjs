@@ -1,15 +1,15 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import NotFound from "./pages/NotFound";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Profile from "./pages/Profile"; // Ensure the correct path to Profile
+import Home from "./pages/Home"; // Example home page component
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/profile/*" element={<Profile />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profile/*" element={<Profile />} />
+      </Routes>
+    </Router>
   );
 }
 
