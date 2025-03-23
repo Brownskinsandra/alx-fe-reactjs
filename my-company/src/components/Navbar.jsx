@@ -1,10 +1,34 @@
+// import { Link } from 'react-router-dom';
+
+// function Navbar() {
+//   return (
+//     <nav style={{ padding: '10px', background: '#333', color: 'white' }}>
+//       <Link to="/" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>Home</Link>
+//       <Link to="/about" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>About</Link>
+//       <Link to="/services" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>Services</Link>
+//       <Link to="/contact" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>Contact</Link>
+//     </nav>
+//   );
+// }
+
+// export default Navbar;
+
+import { Link } from "react-router-dom";
+
 function Navbar() {
   return (
-    <nav style={{ backgroundColor: "blue", display: "flex", justifyContent: "space-between", padding: "10px" }}>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/services">Services</a>
-      <a href="/contact">Contact</a>
+    <nav style={{ 
+      padding: "10px", 
+      backgroundColor: "#333", // ✅ Changed from 'background' to 'backgroundColor'
+      color: "white",
+      display: "flex", // ✅ Added display
+      justifyContent: "space-between", // ✅ Added justifyContent
+      alignItems: "center" // Optional for better alignment
+    }}>
+      <Link to="/" style={{ margin: "0 15px", color: "white", textDecoration: "none" }}>Home</Link>
+      <Link to="/about" style={{ margin: "0 15px", color: "white", textDecoration: "none" }}>About</Link>
+      <Link to="/services" style={{ margin: "0 15px", color: "white", textDecoration: "none" }}>Services</Link>
+      <Link to="/contact" style={{ margin: "0 15px", color: "white", textDecoration: "none" }}>Contact</Link>
     </nav>
   );
 }
