@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Profile from "./components/Profile"; // Ensure the correct path to Profile
-import Home from "./pages/Home"; // Example home page component
+import Home from "./pages/Home"; // Ensure Home exists
+import BlogPost from "./pages/BlogPost"; // Import BlogPost
+import Profile from "./pages/Profile"; // Import Profile if it exists
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile/*" element={<Profile />} />
+        <Route path="/blog/:id" element={<BlogPost />} /> {/* Dynamic Route */}
       </Routes>
     </Router>
   );
