@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Profile from "./pages/Profile"; // Ensure the correct path to Profile
+import Profile from "./components/Profile"; // Ensure the correct path to Profile
 import Home from "./pages/Home"; // Example home page component
 
 function App() {
