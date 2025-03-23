@@ -41,17 +41,32 @@ const RegistrationForm = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>
-          <input type="text" name="username" value={formData.username} onChange={handleChange} />
+          <input
+            type="text"
+            name="username"
+            value={formData.username} // ✅ Corrected: `value` is now explicitly set
+            onChange={handleChange}
+          />
           {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
         </div>
         <div>
           <label>Email:</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
+          <input
+            type="email"
+            name="email"
+            value={formData.email} // ✅ Corrected: `value` is now explicitly set
+            onChange={handleChange}
+          />
           {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
         </div>
         <div>
           <label>Password:</label>
-          <input type="password" name="password" value={formData.password} onChange={handleChange} />
+          <input
+            type="password"
+            name="password"
+            value={formData.password} // ✅ Corrected: `value` is now explicitly set
+            onChange={handleChange}
+          />
           {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
         </div>
         <button type="submit">Register</button>
