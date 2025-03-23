@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 
 const BlogPost = () => {
-  const { id } = useParams(); // Get the dynamic id from the URL
+  const { id } = useParams(); // Get the dynamic "id" from the URL
 
   return (
     <div>
-      <h1>Blog Post</h1>
-      <p>Displaying content for blog post ID: {id}</p>
+      <h2>Blog Post {id}</h2>
+      <p>This is the content of blog post {id}.</p>
     </div>
   );
 };
