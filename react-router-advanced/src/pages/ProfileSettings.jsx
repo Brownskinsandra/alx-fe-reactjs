@@ -1,5 +1,10 @@
 const ProfileSettings = () => {
-  return <h2>Profile Settings</h2>;
+  return (
+    <div>
+      <h3>Profile Settings</h3>
+      <p>Here you can update your profile settings.</p>
+    </div>
+  );
 };
 
 export default ProfileSettings;
