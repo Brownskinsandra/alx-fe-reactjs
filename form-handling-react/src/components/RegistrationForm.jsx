@@ -1,77 +1,40 @@
 import { useState } from "react";
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
-  const [errors, setErrors] = useState({});
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const validate = () => {
-    let newErrors = {};
-    if (!formData.username) newErrors.username = "Username is required";
-    if (!formData.email) newErrors.email = "Email is required";
-    if (!formData.password) newErrors.password = "Password is required";
-    return newErrors;
-  };
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-    } else {
-      console.log("Submitted Data:", formData);
-      setErrors({});
-    }
+    console.log({ username, email, password });
   };
 
   return (
-    <div>
-      <h2>Controlled Form</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username} // ✅ Corrected: `value` is now explicitly set
-            onChange={handleChange}
-          />
-          {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
-        </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email} // ✅ Corrected: `value` is now explicitly set
-            onChange={handleChange}
-          />
-          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password} // ✅ Corrected: `value` is now explicitly set
-            onChange={handleChange}
-          />
-          {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
-        </div>
-        <button type="submit">Register</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>Username:</label>
+      <input
+        type="text"
+        value={username}  // ✅ Controlled input
+        onChange={(e) => setUsername(e.target.value)}
+      />
+
+      <label>Email:</label>
+      <input
+        type="email"
+        value={email}  // ✅ Controlled input
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <label>Password:</label>
+      <input
+        type="password"
+        value={password}  // ✅ Controlled input
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button type="submit">Register</button>
+    </form>
   );
 };
 
