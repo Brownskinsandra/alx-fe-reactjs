@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import UserContext from "./UserContext";  // ✅ Correct import
+import UserContext from "./UserContext";
 
 function UserDetails() {
-  const userData = useContext(UserContext);  // ✅ Get data from Context
+  const userData = useContext(UserContext);
 
   return (
     <div>
-      <p>Name: {userData?.name}</p>  {/* ✅ Use optional chaining in case userData is undefined */}
-      <p>Email: {userData?.email}</p>
+      <p>Name: {userData.name}</p>
+      <p>Email: {userData.email}</p>
     </div>
   );
 }

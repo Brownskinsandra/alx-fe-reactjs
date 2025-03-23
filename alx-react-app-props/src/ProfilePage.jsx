@@ -1,7 +1,7 @@
-import UserInfo from './UserInfo';  // Import UserInfo component
+import UserInfo from "./UserInfo";
 
 function ProfilePage() {
-  return <UserInfo />;  // No props needed anymore!
+  return <UserInfo />;
 }
 
 export default ProfilePage;
