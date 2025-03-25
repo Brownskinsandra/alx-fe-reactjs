@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import TodoList from "../TodoList"; // Ensure the correct path
+import TodoList from "../components/TodoList"; // Ensure the correct path
 
 describe("TodoList Component", () => {
   it("renders TodoList component with initial todos", () => {
