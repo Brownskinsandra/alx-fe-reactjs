@@ -1,6 +1,7 @@
+import React from "react"; // ✅ Ensure React is imported
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import TodoList from "../components/TodoList"; // Ensure the correct path
+import TodoList from "../components/TodoList"; // ✅ Ensure correct import path
 
 describe("TodoList Component", () => {
   it("renders TodoList component with initial todos", () => {
@@ -32,9 +33,9 @@ describe("TodoList Component", () => {
   it("deletes a todo", () => {
     render(<TodoList />);
     const todoItem = screen.getByText(/Learn React/i);
-    const deleteButton = todoItem.nextSibling; // Get the delete button next to it
+    const deleteButton = screen.getByRole("button", { name: /delete/i }); // Ensure it finds the correct button
     fireEvent.click(deleteButton);
 
-    expect(todoItem).not.toBeInTheDocument();
+    expect(screen.queryByText(/Learn React/i)).not.toBeInTheDocument();
   });
 });
