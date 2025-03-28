@@ -28,18 +28,20 @@ const RecipeDetail = () => {
         <h1 className="text-3xl font-bold mt-4">{recipe.title}</h1>
         <p className="text-gray-600">{recipe.summary}</p>
 
+        {/* Ingredients Section */}
         <h2 className="text-xl font-semibold mt-6">Ingredients:</h2>
         <ul className="list-disc list-inside text-gray-700">
-          <li>Ingredient 1</li>
-          <li>Ingredient 2</li>
-          <li>Ingredient 3</li>
+          {recipe.ingredients.map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
+          ))}
         </ul>
 
+        {/* Instructions Section */}
         <h2 className="text-xl font-semibold mt-6">Cooking Instructions:</h2>
         <ol className="list-decimal list-inside text-gray-700">
-          <li>Step 1: Do something</li>
-          <li>Step 2: Do another thing</li>
-          <li>Step 3: Serve and enjoy!</li>
+          {recipe.instructions.map((step, index) => (
+            <li key={index}>{step}</li>
+          ))}
         </ol>
       </div>
     </div>
