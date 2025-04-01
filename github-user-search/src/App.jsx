@@ -17,7 +17,7 @@ const App = () => {
         if (userData) {
             setUser(userData);
         } else {
-            setError(true);
+            setError(true);  // ✅ Error is set correctly when user is not found
         }
 
         setLoading(false);
