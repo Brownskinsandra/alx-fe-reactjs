@@ -1,9 +1,25 @@
-const SearchBar = () => {
+import { useState } from "react";
+
+const SearchBar = ({ onSearch }) => {
+    const [username, setUsername] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (username.trim() !== "") {
+            onSearch(username); // Call the parent function to fetch user data
+        }
+    };
+
     return (
-        <div>
-            <input type="text" placeholder="Search GitHub User" />
-            <button>Search</button>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <input
+                type="text"
+                placeholder="Enter GitHub username..."
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+            <button type="submit">Search</button>
+        </form>
     );
 };
 
