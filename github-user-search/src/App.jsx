@@ -1,6 +1,6 @@
-import { useState } from "react";
-import Search from "./components/Search";
-import { fetchUserData } from "./services/githubService";
+import { useState } from 'react';
+import Search from './components/Search';
+import { fetchUserData } from './services/githubService';
 
 const App = () => {
     const [user, setUser] = useState(null);
@@ -10,17 +10,17 @@ const App = () => {
     const handleSearch = async (username) => {
         setLoading(true);
         setError(false);  // Reset error on new search
-        setUser(null);
+        setUser(null);     // Reset user on new search
 
         const userData = await fetchUserData(username);
 
         if (userData) {
-            setUser(userData);  // Set user data if found
+            setUser(userData);
         } else {
-            setError(true);  // Set error if user not found
+            setError(true);  // User not found, set error to true
         }
 
-        setLoading(false);
+        setLoading(false);  // Turn off loading once data is received
     };
 
     return (
