@@ -27,8 +27,8 @@ const Search = ({ onSearch, user, loading, error }) => {
             {/* Loading State */}
             {loading && <p>Loading...</p>}
 
-            {/* Display Error Message if user is not found */}
-            {error && <p>Looks like we cant find the user</p>}
+            {/* Error Message if user is not found */}
+            {error && <p>Looks like we cant find the user. Please try again with a valid username.</p>}
 
             {/* Display User Info if found */}
             {user && (

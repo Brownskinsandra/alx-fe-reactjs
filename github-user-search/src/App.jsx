@@ -12,12 +12,12 @@ const App = () => {
         setError(false);  // Reset error on new search
         setUser(null);     // Reset user on new search
 
-        const userData = await fetchUserData(username);
+        const userData = await fetchUserData(username);  // Call the function
 
         if (userData) {
             setUser(userData);
         } else {
-            setError(true);  // User not found, set error to true
+            setError(true);  // Set error if user not found
         }
 
         setLoading(false);  // Turn off loading once data is received

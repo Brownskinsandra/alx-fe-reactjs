@@ -3,9 +3,8 @@ import axios from 'axios';
 export const fetchUserData = async (username) => {
     try {
         const response = await axios.get(`https://api.github.com/users/${username}`);
-        return response.data;
+        return response.data;  // Return user data if found
     } catch (error) {
-        // If the user is not found, we catch the error and return null
-        return null;
+        return null;  // Return null if user is not found or any other error occurs
     }
 };
