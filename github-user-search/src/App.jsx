@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Search from "./components/Search";  // ✅ Import Search component
+import Search from "./components/Search";
 import { fetchUserData } from "./services/githubService";
 
 const App = () => {
@@ -26,21 +26,7 @@ const App = () => {
     return (
         <div>
             <h1>GitHub User Search</h1>
-            <Search onSearch={handleSearch} />  {/* ✅ Use the Search component */}
-
-            {loading && <p>Loading...</p>}
-            {error && <p>Looks like we can't find the user.</p>}
-            {user && (
-                <div>
-                    <img src={user.avatar_url} alt={user.login} width="100" />
-                    <h2>{user.name || user.login}</h2>
-                    <p>
-                        <a href={user.html_url} target="_blank" rel="noopener noreferrer">
-                            Visit Profile
-                        </a>
-                    </p>
-                </div>
-            )}
+            <Search onSearch={handleSearch} user={user} loading={loading} error={error} />
         </div>
     );
 };
