@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import { fetchUserData } from "../services/githubService"; // Import API function
 
 const Search = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -9,29 +9,19 @@ const Search = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    const fetchUserData = async () => {
-        setLoading(true);
-        setError(false);
-        setUserResults([]);
-
-        let query = `${searchTerm}`;
-        if (location) query += `+location:${location}`;
-        if (minRepos > 0) query += `+repos:>${minRepos}`;
-
-        try {
-            const response = await axios.get(`https://api.github.com/search/users?q=${query}`);
-            setUserResults(response.data.items);
-        } catch (err) {
-            setError(true);
-        }
-        setLoading(false);
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (searchTerm.trim()) {
-            fetchUserData();
-            setSearchTerm("");
+            setLoading(true);
+            setError(false);
+            setUserResults([]);
+
+            const results = await fetchUserData(searchTerm, location, minRepos);
+            if (results.length === 0) {
+                setError(true);
+            }
+            setUserResults(results);
+            setLoading(false);
         }
     };
 
@@ -92,8 +82,6 @@ const Search = () => {
                             />
                             <div>
                                 <h2 className="font-semibold text-lg">{user.login}</h2>
-                                <p>{user.location || "No location provided"}</p>
-                                <p>Repositories: {user.public_repos}</p>
                                 <a
                                     href={user.html_url}
                                     target="_blank"
