@@ -9,15 +9,15 @@ const App = () => {
 
     const handleSearch = async (username) => {
         setLoading(true);
-        setError(false);
+        setError(false);  // Reset error on new search
         setUser(null);
 
         const userData = await fetchUserData(username);
 
         if (userData) {
-            setUser(userData);
+            setUser(userData);  // Set user data if found
         } else {
-            setError(true);  // ✅ Error is set correctly when user is not found
+            setError(true);  // Set error if user not found
         }
 
         setLoading(false);

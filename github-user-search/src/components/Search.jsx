@@ -27,10 +27,10 @@ const Search = ({ onSearch, user, loading, error }) => {
             {/* Loading State */}
             {loading && <p>Loading...</p>}
 
-            {/* ✅ Error Message if the user is not found */}
+            {/* Display Error Message if user is not found */}
             {error && <p>Looks like we can't find the user.</p>}
 
-            {/* ✅ Display User Info if found */}
+            {/* Display User Info if found */}
             {user && (
                 <div>
                     <img src={user.avatar_url} alt={user.login} width="100" />
