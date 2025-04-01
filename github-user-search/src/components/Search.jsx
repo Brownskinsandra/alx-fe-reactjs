@@ -1,19 +1,37 @@
 import { useState } from "react";
+import axios from "axios";  // Import Axios here for API requests
 
-const Search = ({ onSearch, user, loading, error }) => {
+const Search = () => {
     const [searchTerm, setSearchTerm] = useState("");
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+
+    // Function to fetch data from GitHub API
+    const fetchUserData = async (username) => {
+        setLoading(true);
+        setError(false);  // Reset error on new search
+        setUser(null);     // Reset user on new search
+
+        try {
+            const response = await axios.get(`https://api.github.com/users/${username}`);
+            setUser(response.data);  // Set user data if found
+        } catch (err) {
+            setError(true);  // Set error if user is not found or any other issue
+        }
+        setLoading(false);  // Turn off loading once data is received
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (searchTerm.trim()) {
-            onSearch(searchTerm);
-            setSearchTerm(""); // Clear input after searching
+            fetchUserData(searchTerm);  // Call the API function with the input value
+            setSearchTerm("");  // Clear input after searching
         }
     };
 
     return (
         <div>
-            {/* Search Form */}
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -24,13 +42,13 @@ const Search = ({ onSearch, user, loading, error }) => {
                 <button type="submit">Search</button>
             </form>
 
-            {/* Loading State */}
+            {/* Loading state */}
             {loading && <p>Loading...</p>}
 
-            {/* Error Message if user is not found */}
-            {error && <p>Looks like we cant find the user. Please try again with a valid username.</p>}
+            {/* Error message if user is not found */}
+            {error && <p>Looks like we can't find the user. Please try again with a valid username.</p>}
 
-            {/* Display User Info if found */}
+            {/* Display user info if found */}
             {user && (
                 <div>
                     <img src={user.avatar_url} alt={user.login} width="100" />
