@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SearchBar from "./components/SearchBar";
-import { fetchUserData } from "./services/githubService";  // ✅ Import it
+import Search from "./components/Search";  // ✅ Import Search component
+import { fetchUserData } from "./services/githubService";
 
 const App = () => {
     const [user, setUser] = useState(null);
@@ -12,7 +12,7 @@ const App = () => {
         setError(false);
         setUser(null);
 
-        const userData = await fetchUserData(username);  // ✅ Call the function
+        const userData = await fetchUserData(username);
 
         if (userData) {
             setUser(userData);
@@ -26,7 +26,7 @@ const App = () => {
     return (
         <div>
             <h1>GitHub User Search</h1>
-            <SearchBar onSearch={handleSearch} />
+            <Search onSearch={handleSearch} />  {/* ✅ Use the Search component */}
 
             {loading && <p>Loading...</p>}
             {error && <p>Looks like we can't find the user.</p>}
